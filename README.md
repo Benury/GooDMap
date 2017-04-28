@@ -4,7 +4,7 @@
 
 预览
 --------
-![Alt text](http://op3poqi43.bkt.clouddn.com/mymapgitimg.png)
+![Alt text](https://github.com/Benury/GooDMap/blob/master/%E6%88%AA%E5%9B%BE.png)
 
 
 --------------------
