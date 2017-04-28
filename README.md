@@ -4,7 +4,15 @@
 
 预览
 --------
-![](http://op3poqi43.bkt.clouddn.com/mymapgitimg.png)
+
+
+<p align=center>
+  <a href="#">
+    <img src="http://op3poqi43.bkt.clouddn.com/mymapgitimg.png" alt="layui" width="520">
+  </a>
+</p>
+
+--------------------
 
 技术栈
 =========
