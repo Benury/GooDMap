@@ -4,7 +4,7 @@
 
 预览
 --------
-
+![Alt text](https://github.com/chenyufeng1991/NewsClient/raw/master/Screenshots/2.png)
 
 ![](http://op3poqi43.bkt.clouddn.com/mymapgitimg.png)
 
