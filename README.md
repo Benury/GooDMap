@@ -4,7 +4,7 @@
 
 预览
 --------
-![Alt text]（http://op3poqi43.bkt.clouddn.com/mymapgitimg.png)
+![Alt text](http://op3poqi43.bkt.clouddn.com/mymapgitimg.png)
 
 
 --------------------
