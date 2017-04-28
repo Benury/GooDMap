@@ -1,0 +1,123 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<style type="text/css">
+		body, html{width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
+		#allmap{height:90%;width:100%;}
+		#r-result{width:100%; font-size:14px;}
+	</style>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=6dD4EzvzZ4Ew1Qj1kdaoqc9bXfCN09fM"></script>
+	<title>城市名定位</title>
+</head>
+<body>
+	<div id="allmap"></div>
+	<div id="r-result">
+		IP: <input id="longitude" type="text" style="width:100px; margin-right:10px;" />
+		姓名: <input id="latitude" type="text" style="width:100px; margin-right:10px;" />
+		<input type="button" value="添加" onclick="theLocation()" />
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	// 百度地图API功能
+
+
+
+
+
+  var map = new BMap.Map("allmap");
+            map.centerAndZoom(new BMap.Point(115.955473000000000000000000000000,28.691647021800000000000000000000),11);
+            map.enableScrollWheelZoom(true);
+	$.get("/map/",{},function(data){
+
+	    for (var i = 0;i<data.length;i++){
+
+            var new_point = new BMap.Point(data[i].x,data[i].y);
+                    var marker = new BMap.Marker(new_point);  // 创建标注
+                    map.addOverlay(marker);              // 将标注添加到地图中
+                    map.panTo(new_point);
+                var opts = {
+              position : new_point,    // 指定文本标注所在的地理位置
+              offset   : new BMap.Size(10, -50)    //设置文本偏移量
+            }
+	    var label = new BMap.Label(data[i].name, opts);  // 创建文本标注对象
+		label.setStyle({
+			 color : "red",
+			 fontSize : "14px",
+			 height : "20px",
+			 lineHeight : "20px",
+			 fontFamily:"微软雅黑",
+             fontWeight:"bolder"
+
+		 });
+	        map.addOverlay(label);
+
+
+        }
+
+         map.centerAndZoom(new BMap.Point(115.955473000000000000000000000000,28.691647021800000000000000000000),11);
+
+
+
+    })
+
+
+	// 用经纬度设置地图中心点
+	function theLocation(){
+		if(document.getElementById("longitude").value != "" && document.getElementById("latitude").value != ""){
+
+
+		     $.ajax({
+            cache: false,
+            type: "POST",
+            url:"/map/",
+            data:{"ip":document.getElementById("longitude").value,"name":document.getElementById("latitude").value},
+            async: true,
+            beforeSend:function(xhr, settings){
+                xhr.setRequestHeader("X-CSRFToken", "5I2SlleZJOMUX9QbwYLUIAOshdrdpRcy");
+            },
+            success: function(data) {
+
+{#                alert(JSON.stringify(data))#}
+
+{#                    map.clearOverlays();#}
+{#                    var new_point = new BMap.Point(115.95547299999997,28.69164702183315);#}
+{#                    var marker = new BMap.Marker(new_point);  // 创建标注#}
+{#                    map.addOverlay(marker);              // 将标注添加到地图中#}
+{#                    map.panTo(new_point);#}
+
+
+{#                    map.clearOverlays();#}
+                    var new_point = new BMap.Point(data.x,data.y);
+                    var marker = new BMap.Marker(new_point);  // 创建标注
+                    map.addOverlay(marker);              // 将标注添加到地图中
+                    map.panTo(new_point);
+{#var infoWindow = new BMap.InfoWindow("哈哈");  // 创建信息窗口对象#}
+{#    map.openInfoWindow(infoWindow,new_point); //开启信息窗口#}
+{##}
+{#    document.getElementById("r-result").innerHTML = infoWindow.getContent();#}
+
+                var opts = {
+	  position : new_point,    // 指定文本标注所在的地理位置
+	  offset   : new BMap.Size(10, -50)    //设置文本偏移量
+	}
+	var label = new BMap.Label(data.name, opts);  // 创建文本标注对象
+		label.setStyle({
+			 color : "red",
+			 fontSize : "14px",
+			 height : "20px",
+			 lineHeight : "20px",
+			 fontFamily:"微软雅黑",
+             fontWeight:"bolder"
+
+		 });
+	map.addOverlay(label);
+
+                     }})
+
+
+		}
+	}
+</script>
