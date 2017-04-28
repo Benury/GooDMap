@@ -6,11 +6,7 @@
 --------
 
 
-<p align=center>
-  <a href="#">
-    <img src="http://op3poqi43.bkt.clouddn.com/mymapgitimg.png" alt="layui" width="520">
-  </a>
-</p>
+![](http://op3poqi43.bkt.clouddn.com/mymapgitimg.png)
 
 --------------------
 
