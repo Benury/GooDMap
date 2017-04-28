@@ -4,7 +4,7 @@
 
 预览
 --------
-![](http://op3poqi43.bkt.clouddn.com/mymapgitimg.png)
+![(http://op3poqi43.bkt.clouddn.com/mymapgitimg.png)]
 
 技术栈
 =========
